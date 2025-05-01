@@ -21,7 +21,7 @@ export default function Home() {
           
           // Ou exemple avec une vidéo (placez une vidéo dans public/videos)
           <video
-             src="/videos/V2Optinova.mp4"
+             src="/videos/v2Optinova.mp4"
              autoPlay loop muted playsInline
              style={{ width: '100%', height: 'auto', display: 'block' }} // Styles inline pour l'exemple
            /> 
