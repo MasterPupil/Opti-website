@@ -1,0 +1,111 @@
+// src/components/BookingSection/BookingSection.module.scss
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.bookingSection {
+  padding: 4rem $side-padding-mobile; // Espace vertical et padding latéral global
+
+  @include tablet-up {
+    padding: 6rem $side-padding-tablet;
+  }
+   @include desktop-up {
+     padding: 6rem $side-padding-desktop;
+   }
+}
+
+.contentBox {
+  position: relative; // Contexte pour l'overlay absolu
+  max-width: 900px; // Largeur maximale de la boîte (ajuster selon la maquette)
+  margin: 0 auto; // Centre la boîte horizontalement
+  border-radius: 16px; // Coins arrondis (ajuster la valeur)
+  overflow: hidden; // Important pour que l'overlay et l'image respectent les coins arrondis
+  padding: 3rem 2rem; // Padding intérieur de la boîte
+  text-align: center; // Centre le texte
+
+  // Image de fond
+  background-image: url('/images/booking-section-background.avif'); // !! Adaptez le chemin vers votre image !!
+  background-size: cover; // Couvre toute la boîte
+  background-position: center; // Centre l'image
+  background-color: #000000; // Couleur de fallback si l'image ne charge pas
+
+  @include tablet-up {
+    padding: 4rem 3rem; // Plus de padding sur écrans larges
+  }
+   @include desktop-up {
+     padding: 5rem 4rem;
+   }
+}
+
+// Superposition pour améliorer la lisibilité
+.backgroundOverlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 18, 18, 0.65); // Fond sombre semi-transparent (ajuster l'opacité)
+  z-index: 1; // Se place entre le fond et le contenu
+}
+
+// Styles du contenu (doivent être au-dessus de l'overlay)
+.title,
+.subtitle,
+.ctaButton {
+  position: relative; // Pour s'assurer qu'ils sont au-dessus de l'overlay
+  z-index: 2; // Au-dessus de backgroundOverlay (z-index: 1)
+  border-radius: 16px;
+  font-size: 1rem;
+
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: $primary-color; // Texte blanc
+
+  @include tablet-up {
+    font-size: 2.5rem;
+  }
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: $secondary-color; // Texte secondaire (un peu gris)
+  margin-bottom: 2rem;
+  max-width: 550px; // Limiter la largeur du sous-titre
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+
+  @include tablet-up {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+// Bouton (style inspiré de la maquette - bouton sombre)
+.ctaButton {
+  display: inline-block;
+  padding: 0.8rem 2rem; // Padding du bouton
+  border-radius: 12px; // Coins arrondis du bouton
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  background-color: #dadee5; // Fond sombre semi-transparent pour le bouton
+  color: #000000; // Texte blanc
+  border: 1px solid rgba(255, 255, 255, 0.2); // Bordure subtile pour le bouton
+
+  &:hover {
+    background-color: darken(#dadee5, 10%); // Légèrement plus clair au survol
+    transform: translateY(-2px);
+  }
+
+   @include tablet-up {
+     padding: 0.9rem 2.5rem;
+     font-size: 1.1rem;
+   }
+}

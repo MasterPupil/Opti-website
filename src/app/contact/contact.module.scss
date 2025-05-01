@@ -1,0 +1,180 @@
+// src/app/contact/contact.module.scss
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.contactPage {
+  background-color: $background-color;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  // Ajout pour s'assurer que la page elle-même ne déborde pas
+  overflow-x: hidden;
+
+
+   @include tablet-up {
+     padding: 6rem 0;
+   }
+}
+
+.gridContainer {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 $side-padding-mobile; // Padding mobile
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    padding: 0 $side-padding-tablet; // Padding tablette
+  }
+   @include desktop-up {
+    gap: 6rem;
+     padding: 0 $side-padding-desktop; // Padding desktop
+  }
+}
+
+// --- Colonne Gauche ---
+.leftColumn {
+  position: relative;
+  padding-top: 2rem;
+  z-index: 1;
+  // !! Ajout crucial pour mobile !!
+  overflow: hidden; // Empêche le ::before de dépasser visuellement OU de causer du reflow horizontal
+
+  // Dégradé ajusté pour ne pas déborder
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20%; // Peut rester négatif pour remonter
+    left: 0;   // Contraint à gauche
+    right: 0;  // Contraint à droite
+    bottom: 0%;
+    width: 100%; // Force la largeur à 100% de la colonne
+    // Ajuster le gradient pour qu'il rende bien dans cette largeur limitée
+    background: radial-gradient(
+      circle at 50% 55%, // Centré en haut
+      rgba(90, 24, 154, 0.4) 0%,
+      rgba(90, 24, 154, 0.15) 50%, 
+      rgba(18,18,18,0.0) 80% // Transition vers transparent
+    );
+    filter: blur(30px); // Flou important
+    z-index: -1; // Derrière le contenu de leftColumn
+    pointer-events: none;
+    opacity: 0.7; // Opacité du dégradé
+  }
+}
+
+.pageTitle {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: $primary-color;
+  line-height: 1.2;
+
+  @include tablet-up {
+    font-size: 3.8rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: $secondary-color;
+  line-height: 1.6;
+  max-width: 400px; // Limiter la largeur du sous-titre
+
+  @include tablet-up {
+    font-size: 1.2rem;
+  }
+}
+
+// --- Colonne Droite & Formulaire ---
+.rightColumn {
+  // Pas de style spécifique nécessaire pour la colonne elle-même pour l'instant
+}
+
+.contactForm {
+  width: 100%;
+}
+
+// Style pour regrouper Prénom/Nom
+.nameFields {
+  display: grid;
+  grid-template-columns: 1fr; // Empilé sur mobile
+  gap: 1.5rem; // Espace entre prénom/nom sur mobile
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1fr; // Côte à côte sur tablette/desktop
+  }
+  margin-bottom: 1.5rem; // Espace sous les champs nom/prénom
+}
+
+
+.formGroup {
+  margin-bottom: 1.5rem; // Espace entre chaque groupe de champ (email, message)
+  width: 100%;
+}
+
+.label {
+  display: block; // Met le label sur sa propre ligne
+  font-size: 0.9rem;
+  color: $secondary-color;
+  margin-bottom: 0.5rem; // Espace entre label et input
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1rem; // Padding intérieur
+  background-color: darken($background-color, 5%); // Fond très sombre mais distinct
+  border: 1px solid rgba(255, 255, 255, 0.1); // Bordure subtile
+  border-radius: 6px; // Coins arrondis
+  color: $primary-color; // Couleur du texte saisi
+  font-size: 1rem;
+  font-family: inherit; // Hérite la police globale
+
+  &::placeholder {
+    color: rgba($secondary-color, 0.6); // Placeholder en gris clair transparent
+    opacity: 1; // Nécessaire pour certains navigateurs
+  }
+
+  &:focus {
+    outline: none; // Supprime l'outline par défaut
+    border-color: $accent-color; // Change la couleur de bordure au focus (violet)
+    // box-shadow: 0 0 0 2px rgba($accent-color, 0.3); // Optionnel: ajoute un halo de focus
+  }
+}
+
+.textarea {
+  resize: vertical; // Permet le redimensionnement vertical uniquement
+  min-height: 100px; // Hauteur minimale
+}
+
+.submitButton {
+  display: inline-block;
+  width: 100%; // Prend toute la largeur sur mobile
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #dadee5; // Violet vif (ajuster la teinte exacte si besoin)
+  color: #000000; // Texte blanc
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: darken(#dadee5, 10%); // Assombrir au survol
+    transform: translateY(-2px);
+  }
+
+  @include tablet-up {
+    width: auto; // Largeur automatique sur écrans plus grands
+    padding: 1rem 3rem; // Plus de padding horizontal
+  }
+}

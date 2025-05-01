@@ -1,0 +1,66 @@
+// src/styles/globals.scss
+
+// Importe variables et mixins pour les rendre disponibles globalement si besoin
+@import 'variables';
+@import 'mixins';
+
+// Reset CSS simple (optionnel mais recommandé)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { // Appliquer la couleur de fond et la police ici
+  font-family: $font-family-main; // Utilise la variable de police
+  background-color: $background-color; // Fond global du site
+  color: $primary-color; // Couleur de texte par défaut globale
+  scroll-behavior: smooth; // Optionnel: pour un défilement doux des ancres
+}
+
+body { // Le body hérite de la couleur de texte, pas besoin de répéter le fond
+  max-width: 100vw;
+  overflow-x: hidden; // Empêche le débordement horizontal
+  // Pas de background-color ici par défaut
+  min-height: 100vh; // Assure que le body prend au moins toute la hauteur
+  display: flex; // Optionnel: utile pour certains layouts sticky footer
+  flex-direction: column; // Optionnel: utile pour certains layouts sticky footer
+}
+
+// Assurer que <main> peut grandir pour pousser le footer en bas (si layout flex sur body)
+main {
+  flex-grow: 1;
+}
+
+
+a {
+  color: inherit; // Hérite la couleur du parent par défaut
+  text-decoration: none; // Supprime le soulignement par défaut
+}
+
+// Classe utilitaire pour le conteneur principal (centrage et padding)
+.container {
+    width: 100%;
+    max-width: 1200px; // Largeur maximale du contenu (ajustable)
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $side-padding-mobile;
+    padding-right: $side-padding-mobile;
+
+    @include tablet-up {
+        padding-left: $side-padding-tablet;
+        padding-right: $side-padding-tablet;
+    }
+
+    @include desktop-up {
+        padding-left: $side-padding-desktop;
+        padding-right: $side-padding-desktop;
+    }
+}
+
+// Style global pour bloquer le scroll quand le menu est ouvert (utilisé par JS)
+body.menu-open {
+    overflow: hidden;
+}

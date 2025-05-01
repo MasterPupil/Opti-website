@@ -1,0 +1,108 @@
+// src/app/about/about.module.scss
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.aboutPage {
+  position: relative; /* pour le ::before */
+  overflow: hidden;   /* évite tout débordement du pseudo-élément */
+
+  /* Padding comme avant */
+  padding: 15rem 1rem 6rem;
+  background-color: $background-color; /* fond sombre en fallback */
+
+  /* --- Calque du dégradé violet --- */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20%; left: -20%; right: -20%; bottom: 30%;
+    /* un dégradé radial centré vers le haut */
+    background: radial-gradient(
+      circle at 50% 30%,
+      #3a0f4f 0%,
+      rgba(58,15,79,0.85) 30%,
+      rgba(18,18,18,0.0) 70%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* On remonte le contenu dessus */
+  .pageTitle,
+  .pageSubtitle,
+  .divider,
+  .section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pageTitle {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 1rem;
+    @include tablet-up {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    @include desktop-up {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .pageSubtitle {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1rem;
+    text-align: center;
+    color: $secondary-color;
+    line-height: 1.6;
+    @include tablet-up {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .divider {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 2rem 0;
+  }
+
+  .section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    @include tablet-up {
+      grid-template-columns: 1fr 2fr;
+      align-items: start;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .sectionTitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $primary-color;
+      margin: 0;
+    }
+
+    .sectionContent {
+      p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: $secondary-color;
+        margin-bottom: 1.5rem;
+        @include tablet-up {
+          font-size: 1.1rem;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

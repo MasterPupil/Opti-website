@@ -1,0 +1,23 @@
+// Importe les variables pour les utiliser ici
+@import 'variables';
+
+// Mixin pour tablettes et plus
+@mixin tablet-up {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+// Mixin pour desktops et plus
+@mixin desktop-up {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+// Mixin pour mobile uniquement (jusqu'à tablette)
+@mixin mobile-only {
+   @media (max-width: ($breakpoint-tablet - 1px)) {
+       @content;
+   }
+}

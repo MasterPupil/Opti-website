@@ -1,95 +1,64 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+// src/app/page.js
+import HeroSection from '@/components/HeroSection/HeroSection';
+import ContentSection from '@/components/ContentSection/ContentSection'; // Importer le nouveau composant
+// Importez Image de Next.js si vous utilisez une image locale optimisée
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <HeroSection />
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      {/* Première Section de Contenu (Ex: Texte à Gauche, Visuel à Droite) */}
+      <ContentSection
+        ariaTitleId="seamless-access" // ID unique pour le titre (accessibilité)
+        layout="textLeft"
+        title="Seamless Access to Blockchain Data" // [cite: 1] Contenu inspiré de la maquette
+        text="Leverage our advanced infrastructure to access real-time and historical blockchain data across multiple networks. Simplify your development process and focus on building value."
+        visualContent={
+          // Vous pouvez mettre ici une image, une vidéo, ou autre chose
+          // Exemple avec une image simple (placez une image dans public/images)
+          
+          // Ou exemple avec une vidéo (placez une vidéo dans public/videos)
+          <video
+             src="/videos/V2Optinova.mp4"
+             autoPlay loop muted playsInline
+             style={{ width: '100%', height: 'auto', display: 'block' }} // Styles inline pour l'exemple
+           /> 
+          // Ou exemple avec next/image (importer 'Image' from 'next/image')
+          /* <Image
+             src="/images/section-image-1.jpg" // Doit être dans public
+             alt="Descriptive alt text"
+             width={500} // Largeur intrinsèque de l'image
+             height={300} // Hauteur intrinsèque de l'image
+             style={{ width: '100%', height: 'auto' }} // Pour la responsivité
+          /> */
+        }
+        buttonLabel="Explore Services"
+        buttonLink="/services" // Lien exemple
+      />
+
+      {/* Deuxième Section de Contenu (Ex: Visuel à Gauche, Texte à Droite) */}
+       <ContentSection
+        ariaTitleId="enriched-data" // ID unique différent
+        layout="textRight" // Inverse le layout
+        title="Unlock Insights with Enriched Blockchain Data" // [cite: 1] Contenu inspiré de la maquette
+        text="Go beyond raw data. Our platform provides enriched and contextualized blockchain information, enabling deeper analysis and smarter decision-making for your business or clients."
+        visualContent={
+           <video
+           src="/videos/bEI1MUca79WBHBMv5SzNMecXuVg.mp4"
+           autoPlay loop muted playsInline
+                     style={{ width: '100%', height: 'auto', display: 'block' }}
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        }
+        buttonLabel="Learn More"
+        buttonLink="/about"
+      />
+
+      {/* Ajoutez d'autres sections ici si nécessaire */}
+
+      {/* Espace pour tester le scroll (peut être retiré plus tard) */}
+      {/* <div style={{ height: '50vh' }}></div> */}
+    </>
   );
 }

@@ -1,0 +1,17 @@
+// Couleurs (Exemple - à adapter depuis la maquette)
+$primary-color: #ffffff; // Blanc pour le texte principal
+$secondary-color: #a0a0a0; // Gris clair pour le sous-texte
+$background-color: #000000; // Fond sombre
+$accent-color: #0070f3; // Couleur d'accentuation (ex: boutons) - à adapter
+
+// Polices
+$font-family-main: 'Arial', sans-serif; // ** Conseil Polices : voir note plus bas **
+
+// Breakpoints (Exemple)
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Padding latéral (pour éviter que le contenu colle aux bords)
+$side-padding-mobile: 1rem;
+$side-padding-tablet: 2rem;
+$side-padding-desktop: 4rem; // ou en px si préféré
