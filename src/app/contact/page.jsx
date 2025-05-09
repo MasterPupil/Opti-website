@@ -21,7 +21,7 @@ const ContactPage = () => {
         <div className={styles.leftColumn}>
           <h1 className={styles.pageTitle}>Contact</h1>
           <p className={styles.subtitle}>
-            Get in touch to explore the future of Web3 data with Nodi. {/* Texte de la maquette */}
+          Get in touch to discuss custom AI solutions for your business with Optinova. {/* Texte de la maquette */}
           </p>
           {/* Le dégradé sera géré en CSS */}
         </div>

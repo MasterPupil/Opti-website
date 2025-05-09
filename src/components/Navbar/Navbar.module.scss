@@ -1,41 +1,62 @@
 // src/components/Navbar/Navbar.module.scss
-@import '@/styles/variables'; // Importer les variables globales (couleurs, breakpoints)
-@import '@/styles/mixins'; // Importer les mixins (media queries)
+@import '@/styles/variables';
+@import '@/styles/mixins';
 
+// ... (vos styles .navbar et .navContainer restent INCHANGÉS) ...
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background-color: rgba(0, 0, 0, 0.092); /* semi-transparent grey as in template */
+    background-color: rgba(0, 0, 0, 0.092);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-  }
+}
   
-
 .navContainer {
   display: flex;
-  justify-content: space-between; // Espace entre logo/nav et burger
-  align-items: center; // Centre verticalement les éléments
+  justify-content: space-between;
+  align-items: center;
 }
 
+// Styles mis à jour pour le logo (image + texte)
 .logo {
-  a {
-    font-weight: bold;
-    font-size: 1.5rem; // Taille du logo/texte
-    color: $primary-color; // Couleur définie dans variables.scss
+  // Le conteneur .logo lui-même n'a pas forcément besoin de styles spécifiques ici,
+  // la taille sera déterminée par son contenu (le lien .logoLinkContainer)
+
+  .logoLinkContainer { // Cible la balise <a> qui contient l'image et le texte
+    display: flex;         // Aligne l'image et le texte sur la même ligne
+    align-items: center;   // Centre verticalement l'image et le texte
+    text-decoration: none; // Enlève le soulignement du lien
+    gap: 0.5rem;           // Espace entre l'icône et le texte (ex: 8px si 1rem = 16px)
+                           // Si `gap` n'est pas supporté par un vieux navigateur,
+                           // vous pouvez utiliser `margin-right` sur .logoIcon
+  }
+
+  .logoIcon {
+    // Le composant <Image> gère sa propre taille via les props width/height.
+    // Vous pouvez ajouter des styles ici si nécessaire, par exemple :
+    // display: block; // ou inline-block selon le besoin d'alignement fin
+  }
+
+  .logoText { // Styles pour le texte "Optinova"
+    font-weight: normal;
+    font-size: 1.5rem;     // Votre taille de police originale
+    color: $primary-color; // Votre couleur originale
+    line-height: 2;        // Ajustez si nécessaire pour un meilleur alignement vertical avec l'icône
   }
 }
 
 // --- Styles Navigation Desktop ---
+// ... (vos styles .navDesktop restent INCHANGÉS) ...
 .navDesktop {
   ul {
     list-style: none;
     display: flex;
-    gap: 2rem; // Espace entre les liens
+    gap: 2rem; 
 
     li {
       a {
@@ -44,66 +65,56 @@
         transition: color 0.2s ease;
 
         &:hover {
-          color: $secondary-color; // Change de couleur au survol (ajustez $accent-color)
+          color: $secondary-color; 
         }
       }
     }
   }
 
-  // Cacher par défaut sur mobile/tablette
-  @include mobile-only { // Utilise le mixin de globals.scss
+  @include mobile-only { 
      display: none;
   }
-  // Alternative si vous n'utilisez pas de mixin :
-  // @media (max-width: ($breakpoint-tablet - 1px)) {
-  //   display: none;
-  // }
 }
 
 // --- Styles Bouton Burger ---
+// ... (vos styles .burgerButton restent INCHANGÉS) ...
 .burgerButton {
-  display: none; // Caché par défaut sur desktop
+  display: none; 
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem; // Taille du bouton
+  width: 2rem; 
   height: 2rem;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10; // Au-dessus de l'overlay potentiel initialement
+  z-index: 10; 
 
   &:focus {
-    outline: none; // Ou style de focus personnalisé
+    outline: none; 
   }
 
-  // Afficher sur mobile/tablette
   @include mobile-only {
     display: flex;
   }
-  // Alternative :
-  // @media (max-width: ($breakpoint-tablet - 1px)) {
-  //   display: flex;
-  // }
 
   .burgerLine {
     width: 2rem;
-    height: 0.2rem; // Épaisseur des lignes
+    height: 0.2rem; 
     background: $primary-color;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
-    transform-origin: 1px; // Point de rotation pour l'animation
+    transform-origin: 1px; 
   }
 
-  // Animation des lignes en "X" quand le bouton a la classe .open
   &.open {
     .burgerLine:nth-child(1) {
       transform: rotate(45deg);
     }
     .burgerLine:nth-child(2) {
       opacity: 0;
-      transform: translateX(20px); // Fait glisser la ligne du milieu
+      transform: translateX(20px); 
     }
     .burgerLine:nth-child(3) {
       transform: rotate(-45deg);
@@ -111,48 +122,36 @@
   }
 }
 
-
 // --- Styles Overlay Mobile ---
+// ... (vos styles .mobileMenuOverlay restent INCHANGÉS) ...
 .mobileMenuOverlay {
-  position: fixed; // Prend tout l'écran
+  position: fixed; 
   top: 0;
-  left: 0; // Commence hors écran à droite (sera géré par GSAP)
+  left: 0; 
   width: 100%;
-  height: 100vh; // Toute la hauteur de la vue
-  background-color: rgba(18, 18, 18, 0.95); // Fond légèrement transparent
-  // Effet de flou optionnel sur l'overlay lui-même (peut être lourd)
-  // backdrop-filter: blur(5px);
-  // -webkit-backdrop-filter: blur(5px);
+  height: 100vh; 
+  background-color: rgba(18, 18, 18, 0.95); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5; // En dessous du bouton burger mais au-dessus du contenu
-
-  // Géré par GSAP: Initialement invisible et hors écran
-  visibility: hidden; // Caché pour l'accessibilité et le layout
+  z-index: 5; 
+  visibility: hidden; 
   opacity: 0;
-  // transform: translateX(100%); // GSAP s'en chargera via xPercent
 
-  // Styles pour la navigation dans l'overlay
   .mobileNav {
       text-align: center;
-
       ul {
           list-style: none;
           padding: 0;
           margin: 0;
-
           li {
-              margin-bottom: 2rem; // Espace entre les liens
-
+              margin-bottom: 2rem; 
               a {
-                  font-size: 1.8rem; // Liens plus grands sur mobile
+                  font-size: 1.8rem; 
                   color: $primary-color;
                   text-decoration: none;
                   transition: color 0.2s ease;
-                  // Sera animé par GSAP (y, opacity)
-                  opacity: 0; // Initialement invisible
-
+                  opacity: 0; 
                   &:hover {
                       color: $secondary-color;
                   }

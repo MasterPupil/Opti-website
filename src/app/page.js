@@ -1,7 +1,7 @@
 // src/app/page.js
 import HeroSection from '@/components/HeroSection/HeroSection';
-import ContentSection from '@/components/ContentSection/ContentSection'; // Importer le nouveau composant
-// Importez Image de Next.js si vous utilisez une image locale optimisée
+import ContentSection from '@/components/ContentSection/ContentSection'; // Import the ContentSection component
+// Import Image from Next.js if you use local optimized images
 import Image from 'next/image';
 
 export default function Home() {
@@ -9,56 +9,49 @@ export default function Home() {
     <>
       <HeroSection />
 
-      {/* Première Section de Contenu (Ex: Texte à Gauche, Visuel à Droite) */}
+      {/* First Content Section: AI Solutions & Benefits */}
       <ContentSection
-        ariaTitleId="seamless-access" // ID unique pour le titre (accessibilité)
+        ariaTitleId="ai-driven-efficiency" // Unique ID for accessibility
         layout="textLeft"
-        title="Seamless Access to Blockchain Data" // [cite: 1] Contenu inspiré de la maquette
-        text="Leverage our advanced infrastructure to access real-time and historical blockchain data across multiple networks. Simplify your development process and focus on building value."
-        visualContent={
-          // Vous pouvez mettre ici une image, une vidéo, ou autre chose
-          // Exemple avec une image simple (placez une image dans public/images)
-          
-          // Ou exemple avec une vidéo (placez une vidéo dans public/videos)
-          <video
-             src="/videos/v2Optinova.mp4"
-             autoPlay loop muted playsInline
-             style={{ width: '100%', height: 'auto', display: 'block' }} // Styles inline pour l'exemple
-           /> 
-          // Ou exemple avec next/image (importer 'Image' from 'next/image')
-          /* <Image
-             src="/images/section-image-1.jpg" // Doit être dans public
-             alt="Descriptive alt text"
-             width={500} // Largeur intrinsèque de l'image
-             height={300} // Hauteur intrinsèque de l'image
-             style={{ width: '100%', height: 'auto' }} // Pour la responsivité
-          /> */
+        title="Unlock Efficiency with AI & Automation"
+        text={
+          <>
+            Optinova delivers intelligent AI and automation solutions that streamline your operations and significantly reduce manual tasks, for both SMBs and professional firms.<br />
+            Our custom systems, from smart CRM workflows to automated reporting, empower you to work smarter, save valuable time, and achieve lasting, scalable results.
+          </>
         }
-        buttonLabel="Explore Services"
-        buttonLink="/services" // Lien exemple
-      />
-
-      {/* Deuxième Section de Contenu (Ex: Visuel à Gauche, Texte à Droite) */}
-       <ContentSection
-        ariaTitleId="enriched-data" // ID unique différent
-        layout="textRight" // Inverse le layout
-        title="Unlock Insights with Enriched Blockchain Data" // [cite: 1] Contenu inspiré de la maquette
-        text="Go beyond raw data. Our platform provides enriched and contextualized blockchain information, enabling deeper analysis and smarter decision-making for your business or clients."
         visualContent={
-           <video
-           src="/videos/bEI1MUca79WBHBMv5SzNMecXuVg.mp4"
-           autoPlay loop muted playsInline
-                     style={{ width: '100%', height: 'auto', display: 'block' }}
-          />
+          <video
+             src="/videos/v2Optinova.mp4" // Placeholder - update with relevant AI/business visual
+             autoPlay loop muted playsInline
+             style={{ width: '100%', height: 'auto', display: 'block' }}
+           />
         }
         buttonLabel="Learn More"
         buttonLink="/about"
       />
 
-      {/* Ajoutez d'autres sections ici si nécessaire */}
-
-      {/* Espace pour tester le scroll (peut être retiré plus tard) */}
-      {/* <div style={{ height: '50vh' }}></div> */}
+      {/* Second Content Section: Custom Strategies & Call to Action */}
+       <ContentSection
+        ariaTitleId="custom-ai-cta" // Unique ID
+        layout="textRight" // Alternating layout
+        title="Custom AI Strategies for Measurable Impact"
+        text={
+          <>
+            Every business is unique. That&#39;s why we partner with you to understand your specific goals, then develop tailored AI automation strategies that deliver tangible improvements and significant time savings.<br />
+            Ready to simplify your processes, scale effectively, and see real results?
+          </>
+        }
+        visualContent={
+           <video
+             src="/videos/bEI1MUca79WBHBMv5SzNMecXuVg.mp4" // Placeholder - update with relevant strategy/results visual
+             autoPlay loop muted playsInline
+             style={{ width: '100%', height: 'auto', display: 'block' }}
+           />
+        }
+        buttonLabel="Book a Free Strategy Call"
+        buttonLink="https://api.leadconnectorhq.com/widget/bookings/optinova-ai-automation-consultation" // Your Calendly link
+      />
     </>
   );
 }

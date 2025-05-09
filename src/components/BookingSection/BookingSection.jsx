@@ -3,7 +3,7 @@ import styles from './BookingSection.module.scss';
 
 const BookingSection = () => {
 
-  const CALENDLY_LINK = "VOTRE_LIEN_CALENDLY_ICI";
+  const CALENDLY_LINK = "https://api.leadconnectorhq.com/widget/bookings/optinova-ai-automation-consultation";
 
   return (
     // La section parente sert de conteneur pour centrer la boîte de contenu

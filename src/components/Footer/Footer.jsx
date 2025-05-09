@@ -24,7 +24,7 @@ const Footer = () => {
 
         <div className={styles.socials}>
           <a
-            href="https://www.linkedin.com/company/optinovaa/posts/?feedView=all"
+            href="https://www.linkedin.com/company/optinovaa/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -32,7 +32,7 @@ const Footer = () => {
             <FaLinkedin size={20} />
           </a>
           <a
-            href="https://youtube.com"
+            href="https://www.youtube.com/@OptinovaPodcast"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"

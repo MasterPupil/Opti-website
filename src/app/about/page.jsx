@@ -114,7 +114,7 @@ const AboutPage = () => {
         {/* Ajout des refs aux éléments */}
         <h1 className={styles.pageTitle} ref={titleRef}>Our Philosophy</h1>
         <p className={styles.pageSubtitle} ref={subtitleRef}>
-          Enriching blockchain data to power innovation and connect the <br /> Web3 ecosystem.
+          Empower people and businesses to work, think, and build smarter.
         </p>
         {/* Ajout de la ref au premier hr */}
         <hr className={styles.divider} ref={topDividerRef} />
@@ -122,19 +122,15 @@ const AboutPage = () => {
         {/* Section: Vision */}
         {/* Ajout de la ref via la fonction addToSectionRefs */}
         <section className={styles.section} ref={addToSectionRefs}>
-          <h2 className={styles.sectionTitle}>Our vision</h2>
+          <h2 className={styles.sectionTitle}>Our Vision</h2>
           <div className={styles.sectionContent}>
             <p>
-              Optinova is founded on the principle that the transformative power of
-              Artificial Intelligence should be a catalyst for growth and efficiency
-              for all businesses, especially Small and Medium-sized Businesses (SMBs)
-              and specialized sectors like Law Firms. We envision a future where
-              cutting-edge technology is not a barrier, but a readily accessible tool
-              driving tangible results.
+              Optinova is founded on the principle that the transformative power of Artificial Intelligence
+              should drive real, measurable growth for Small and Medium-sized Businesses (SMBs).
             </p>
             <p>
-              Our goal is to empower businesses and developers to unlock the true potential
-              of blockchain technology for a more connected, decentralized future.
+              We believe AI and automation aren’t just for big enterprises. They’re powerful tools that can help
+              everyday businesses work smarter, save time, and scale efficiently.
             </p>
           </div>
         </section>
@@ -142,18 +138,23 @@ const AboutPage = () => {
 
         {/* Section: Mission */}
         <section className={styles.section} ref={addToSectionRefs}>
-          <h2 className={styles.sectionTitle}>Our mission</h2>
+          <h2 className={styles.sectionTitle}>Our Mission</h2>
           <div className={styles.sectionContent}>
             <p>
-              Our core mission is to democratize AI. We strive to make sophisticated tools
-              understandable, usable, and strategically valuable. We believe in fostering
-              innovation not just within our walls, but within the operations of every client
-              we partner with. This requires a deep commitment to understanding their unique
-              challenges and tailoring solutions that deliver measurable impact.
+              Our mission at Optinova is to make advanced AI accessible and practical, helping business
+              owners and developers unlock new levels of productivity, streamline operations, and deliver
+              better customer experiences.
             </p>
             <p>
-              Through cutting-edge technology and a commitment to excellence, we strive to
-              become the leading data provider for the Web3 revolution.
+              We’re driven by a belief in the power of democratized AI, where sophisticated tools aren’t
+              reserved for tech giants, but are understandable, usable, and strategically valuable for
+              businesses of all sizes. Our approach starts with listening: understanding the unique challenges
+              our clients face, then tailoring AI solutions that create real, measurable impact.
+            </p>
+            <p>
+              By combining cutting-edge technology with a deep commitment to client success, Optinova
+              aims to lead the way as a trusted intelligence and data partner in the evolving digital landscape,
+              including the future of Web3.
             </p>
           </div>
         </section>
@@ -161,18 +162,21 @@ const AboutPage = () => {
 
         {/* Section: Values */}
         <section className={styles.section} ref={addToSectionRefs}>
-          <h2 className={styles.sectionTitle}>Our values</h2>
+          <h2 className={styles.sectionTitle}>Our Values</h2>
           <div className={styles.sectionContent}>
             <p>
-              We prioritize innovation by constantly pushing the boundaries of what's possible
-              in blockchain data. Transparency and trust are at the core of our mission,
-              ensuring that every interaction reflects our commitment to integrity. Collaboration
-              fuels our progress as we build meaningful partnerships to achieve collective success.
+              We prioritize innovation by constantly pushing the boundaries of what's possible in AI and
+              automation. Transparency and trust are at the core of our mission, ensuring that every
+              interaction reflects our commitment to integrity.
             </p>
             <p>
-              We strive for excellence in delivering reliable, precise solutions tailored to the
-              ever-evolving needs of our users. Above all, we are dedicated to sustainability,
-              working toward a decentralized future that benefits generations to come.
+              Collaboration fuels our progress as we build meaningful partnerships to achieve collective
+              success.
+            </p>
+            <p>
+              We strive for excellence in delivering reliable, precise solutions tailored to the ever-evolving
+              needs of our users. Above all, we are dedicated to sustainability, working toward a decentralized
+              future that benefits generations to come.
             </p>
           </div>
         </section>

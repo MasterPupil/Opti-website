@@ -24,22 +24,22 @@ const HeroSection = () => {
       {/* Conteneur pour le contenu textuel (centré) */}
       <div className={`container ${styles.heroContent}`}> {/* Container global + style local */}
         <h1 className={styles.heroTitle}>
-          Unlock Real-time AI Insights {/* Adaptez le titre selon la maquette [cite: 1] */}
+        AI Integration & Automation for SMBs
         </h1>
         <p className={styles.heroSubtitle}>
-          Empowering SMBs and Law Firms with Tailored AI Solutions {/* Adaptez le sous-titre */}
+        Smarter Operations. Real Results. <br /> <br /> Intelligent AI & Automation, Tailored for Your Growth.
         </p>
         <div className={styles.ctaButtons}>
           <Link href="/about" className={`${styles.ctaButton} ${styles.ctaLearnMore}`}>
             Learn More
           </Link>
           <a
-            href="VOTRE_LIEN_CALENDLY_ICI" // !! Remplacez par votre vrai lien Calendly !!
+            href="https://api.leadconnectorhq.com/widget/bookings/optinova-ai-automation-consultation" // !! Remplacez par votre vrai lien Calendly !!
             target="_blank" // Ouvre dans un nouvel onglet
             rel="noopener noreferrer" // Sécurité pour les liens externes
             className={`${styles.ctaButton} ${styles.ctaBookCall}`}
           >
-            Book a Call
+            Plan Free Call {/* MODIFIÉ ICI */}
           </a>
         </div>
       </div>
