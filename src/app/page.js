@@ -1,7 +1,6 @@
-// src/app/page.js
+// File: src/app/page.js
 import HeroSection from '@/components/HeroSection/HeroSection';
-import ContentSection from '@/components/ContentSection/ContentSection'; // Import the ContentSection component
-// Import Image from Next.js if you use local optimized images
+import ContentSection from '@/components/ContentSection/ContentSection';
 import Image from 'next/image';
 
 export default function Home() {
@@ -11,7 +10,7 @@ export default function Home() {
 
       {/* First Content Section: AI Solutions & Benefits */}
       <ContentSection
-        ariaTitleId="ai-driven-efficiency" // Unique ID for accessibility
+        ariaTitleId="ai-driven-efficiency"
         layout="textLeft"
         title="Unlock Efficiency with AI & Automation"
         text={
@@ -22,35 +21,43 @@ export default function Home() {
         }
         visualContent={
           <video
-             src="/videos/v2Optinova.mp4" // Placeholder - update with relevant AI/business visual
-             autoPlay loop muted playsInline
-             style={{ width: '100%', height: 'auto', display: 'block' }}
-           />
+            src="/videos/v2Optinova.mp4"
+            data-fallback="/images/v2OptinovaTEST2.gif"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
         }
         buttonLabel="Learn More"
         buttonLink="/about"
       />
 
       {/* Second Content Section: Custom Strategies & Call to Action */}
-       <ContentSection
-        ariaTitleId="custom-ai-cta" // Unique ID
-        layout="textRight" // Alternating layout
+      <ContentSection
+        ariaTitleId="custom-ai-cta"
+        layout="textRight"
         title="Custom AI Strategies for Measurable Impact"
         text={
           <>
-            Every business is unique. That&#39;s why we partner with you to understand your specific goals, then develop tailored AI automation strategies that deliver tangible improvements and significant time savings.<br />
+            Every business is unique. That&apos;s why we partner with you to understand your specific goals, then develop tailored AI automation strategies that deliver tangible improvements and significant time savings.<br />
             Ready to simplify your processes, scale effectively, and see real results?
           </>
         }
         visualContent={
-           <video
-             src="/videos/bEI1MUca79WBHBMv5SzNMecXuVg.mp4" // Placeholder - update with relevant strategy/results visual
-             autoPlay loop muted playsInline
-             style={{ width: '100%', height: 'auto', display: 'block' }}
-           />
+          <video
+            src="/videos/bEI1MUca79WBHBMv5SzNMecXuVg.mp4"
+            data-fallback="/images/Optigif4.gif"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
         }
         buttonLabel="Book a Free Strategy Call"
-        buttonLink="https://api.leadconnectorhq.com/widget/bookings/optinova-ai-automation-consultation" // Your Calendly link
+        buttonLink="https://api.leadconnectorhq.com/widget/bookings/optinova-ai-automation-consultation"
       />
     </>
   );

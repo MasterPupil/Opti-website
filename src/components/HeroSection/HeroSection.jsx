@@ -1,60 +1,56 @@
 // src/components/HeroSection/HeroSection.jsx
-'use client'; // Assurez-vous que c'est un Client Component si ce n'est pas déjà le cas pour utiliser useEffect et useRef
+'use client';
 
-import React, { useRef, useEffect } from 'react'; // MODIFIÉ ICI : ajout de useRef et useEffect
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './HeroSection.module.scss';
 
 const HeroSection = () => {
-  const videoRef = useRef(null); // MODIFIÉ ICI : création de la référence pour la vidéo
+  const videoRef = useRef(null);
 
-  // MODIFIÉ ICI : ajout de useEffect pour la gestion de la vidéo
   useEffect(() => {
     const videoElement = videoRef.current;
     if (videoElement) {
-      // Il est bon de ré-appliquer ces propriétés ici pour s'assurer qu'elles sont bien actives
       videoElement.muted = true;
       videoElement.loop = true;
       videoElement.playsInline = true;
 
-      // Tentative de lecture de la vidéo
       const playPromise = videoElement.play();
 
       if (playPromise !== undefined) {
         playPromise
           .then(_ => {
-            // La lecture a démarré (ou était déjà en cours)
             console.log(`Vidéo [${videoElement.src}] : lecture automatique initiée ou confirmée.`);
+            // Si la vidéo joue, le poster (GIF) sera caché par la vidéo elle-même.
           })
           .catch(error => {
-            // La lecture automatique a été bloquée
             console.error(`Vidéo [${videoElement.src}] : ERREUR - Lecture automatique bloquée par le navigateur :`, error);
-            // Ici, vous pourriez envisager d'afficher un bouton de lecture personnalisé si nécessaire,
-            // ou de logger cette erreur pour analyse.
+            // Si la lecture est bloquée, le navigateur devrait afficher l'image poster.
+            // Puisque le poster est votre GIF animé, l'animation du GIF sera visible.
           });
       }
     }
-  }, []); // Le tableau de dépendances vide [] assure que cet effet s'exécute une seule fois après le montage initial.
+  }, []);
 
   return (
     <section className={styles.heroSection}>
       {/* Conteneur pour la vidéo en arrière-plan */}
       <div className={styles.videoBackground}>
         <video
-          ref={videoRef} // MODIFIÉ ICI : liaison de la référence à l'élément vidéo
-          src="/videos/Optinova.mp4" // Assurez-vous que ce chemin est correct
-          // autoPlay // L'attribut autoPlay est maintenant géré par l'appel videoElement.play() dans useEffect
-          loop     // Conservé pour la lecture en boucle
-          muted    // Conservé, crucial pour l'autoplay
-          playsInline // Conservé, crucial pour iOS
-          preload="auto" // Changé en "auto" pour potentiellement aider le chargement avant la lecture JS
+          ref={videoRef}
+          src="/videos/Optinova.mp4" // Votre vidéo principale
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="/images/testopti.gif" // MODIFIÉ ICI : ajout de l'attribut poster avec le chemin vers votre GIF
         />
         {/* Superposition sombre optionnelle pour améliorer la lisibilité du texte */}
         <div className={styles.videoOverlay}></div>
       </div>
 
       {/* Conteneur pour le contenu textuel (centré) */}
-      <div className={`container ${styles.heroContent}`}> {/* Container global + style local */}
+      <div className={`container ${styles.heroContent}`}>
         <h1 className={styles.heroTitle}>
         AI Integration & Automation for SMBs
         </h1>
