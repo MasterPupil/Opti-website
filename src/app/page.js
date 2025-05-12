@@ -21,7 +21,7 @@ export default function Home() {
         }
         visualContent={
           <video
-            src="/videos/optinova2.mp4"
+            src="/videos/optinova2.mp4.mp4"
             data-fallback="/images/optinova2_GIF.gif"
             autoPlay
             loop
